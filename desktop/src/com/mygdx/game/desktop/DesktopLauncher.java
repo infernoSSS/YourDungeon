@@ -9,7 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = 1920;
 		config.height = 1080;
-		config.title = "Your dungeon";
+		config.title = "Your Dungeon";
 		new LwjglApplication(new MyGdxGame(), config);
 	}
 }

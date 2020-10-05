@@ -3,6 +3,7 @@ package com.mygdx.game.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector3;
+import org.w3c.dom.html.HTMLTableRowElement;
 
 import static com.sun.tools.doclint.Entity.or;
 
@@ -19,7 +20,7 @@ public class Controller {
     private float verticalMotion = 0.0f;
     private float horizontalMotion = 0.0f;
 
-    public Vector3 generateMotionVector() {
+    public Vector3 generateMotionVector() throws Exception {
         if (useHardwareKeyboard == true) {
             if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)){
                 verticalMotion = 1.0f;
@@ -33,8 +34,9 @@ public class Controller {
             else if (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
                 verticalMotion = -1.0f;
             }
+            return new Vector3(horizontalMotion, verticalMotion, 0);
         }
-        return new Vector3(horizontalMotion, verticalMotion, 0);
+        throw new Exception("No active keyboard found!");
     }
 
 
@@ -43,16 +45,20 @@ public class Controller {
     private int lastXCursorPosition = 0;
     private int lastYCursorPosition = 0;
 
-    public Vector3 generateMousePositionVector() {
-        if (Gdx.input.justTouched()) {
-            vector.x = lastXCursorPosition = Gdx.input.getX();
-            vector.y = lastYCursorPosition = Gdx.input.getY();
-        }
-        else {
-            vector.x = lastXCursorPosition;
-            vector.y = lastYCursorPosition;
-        }
-        return vector;
+    public Vector3 generateMousePositionVector() throws Exception{
+        //if (useMultiTouch == true) {
+            if (Gdx.input.justTouched()) {
+                vector.x = lastXCursorPosition = Gdx.input.getX();
+                vector.y = lastYCursorPosition = Gdx.input.getY();
+            }
+            else {
+                vector.x = lastXCursorPosition;
+                vector.y = lastYCursorPosition;
+            }
+            vector.z = 0;
+            return vector;
+        // }
+        // throw new Exception("No active touch handler found!");
     }
 
 }

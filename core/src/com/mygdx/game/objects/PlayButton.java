@@ -18,7 +18,9 @@ public class PlayButton extends GameObject {
     public void create(GameManager gameManager, Vector3 position) {
         super.create(gameManager, position);
         this.position = position;
-        hitbox = new Rectangle(position.x, position.y, gameManager.getTextureManager().getTexture("play").getWidth(), gameManager.getTextureManager().getTexture("play").getHeight());
+        hitbox = new Rectangle(position.x, position.y, gameManager.getTextureManager().getTexture("play").getWidth(),
+                gameManager.getTextureManager().getTexture("play").getHeight());
+
     }
 
     @Override
@@ -29,12 +31,13 @@ public class PlayButton extends GameObject {
     @Override
     public void update() {
         super.update();
+        checkTap();
     }
 
     public void checkTap(){
         if(gameManager.getController().isTouched()){
             if (hitbox.contains(gameManager.getController().generateMousePositionVector().x, gameManager.getController().generateMousePositionVector().y)){
-
+                sceneManager.changeScene("gameScene");
             }
         }
     }

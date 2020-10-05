@@ -7,8 +7,8 @@ import com.mygdx.game.MyGdxGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width = 1920;
-		config.height = 1080;
+		config.width = 400; // haha
+		config.height = 600;
 		config.title = "Your Dungeon";
 		new LwjglApplication(new MyGdxGame(), config);
 	}

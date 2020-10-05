@@ -16,16 +16,18 @@ public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture ship;
 
+	// -- Debug block
 	private Controller controller;
+	// -- Debug block
 
 	@Override
 	public void create () {
 		gameManager  = new GameManager();
 		batch = new SpriteBatch();
-		controller = new Controller();
 
 
 		// -- Debug block
+		controller = new Controller();
 		ship = gameManager.getTextureManager().getTexture("ship");
 		new SceneManager(gameManager);
 		// -- Debug block Ends

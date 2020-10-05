@@ -11,6 +11,10 @@ public class TextureManager {
         textures = new HashMap<>();
         textures.put("ship", new Texture("ship/starship.png"));
         textures.put("play", new Texture("buttons/Play.png"));
+        textures.put("meteor1", new Texture("meteors/meteor1.png"));
+        textures.put("meteor2", new Texture("meteors/meteor2.png"));
+        textures.put("meteor3", new Texture("meteors/meteor3.png"));
+        textures.put("meteor4", new Texture("meteors/meteor4.png"));
     }
 
     public Texture getTexture(String textureName) {

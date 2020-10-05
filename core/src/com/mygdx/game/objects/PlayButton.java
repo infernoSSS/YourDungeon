@@ -10,13 +10,15 @@ public class PlayButton extends GameObject {
     private Rectangle hitbox;
     private SceneManager sceneManager;
 
-    public PlayButton(SceneManager sceneManager){
+    public PlayButton(SceneManager sceneManager, Vector3 position){
+        super(position);
+        this.position = position;
         this.sceneManager = sceneManager;
     }
 
     @Override
-    public void create(GameManager gameManager, Vector3 position) {
-        super.create(gameManager, position);
+    public void create(GameManager gameManager) {
+        super.create(gameManager);
         this.position = position;
         hitbox = new Rectangle(position.x, position.y, gameManager.getTextureManager().getTexture("play").getWidth(),
                 gameManager.getTextureManager().getTexture("play").getHeight());

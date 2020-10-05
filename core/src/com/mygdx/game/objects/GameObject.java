@@ -9,9 +9,12 @@ public abstract class GameObject {
     protected GameManager gameManager;
     protected Vector3 position;
 
-    public void create(GameManager gameManager, Vector3 position){
-        this.gameManager=gameManager;
+    public GameObject(Vector3 position){
         this.position = position;
+    }
+
+    public void create(GameManager gameManager){
+        this.gameManager=gameManager;
     }
 
     public void draw(SpriteBatch batch){

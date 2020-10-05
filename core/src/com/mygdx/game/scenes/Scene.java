@@ -22,6 +22,7 @@ public abstract class Scene {
     public void draw(SpriteBatch batch){
         for(ArrayList<GameObject> array : Lists){
             for (GameObject gameObject : array){
+                if(gameObject!=null)
                 gameObject.draw(batch);
             }
         }

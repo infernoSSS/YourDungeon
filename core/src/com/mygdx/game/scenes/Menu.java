@@ -16,13 +16,13 @@ public class Menu extends Scene {
     public void create(GameManager gameManager, SceneManager sceneManager) {
         super.create(gameManager, sceneManager);
         playButtons = new ArrayList<>();
-        playButtons.add(new PlayButton(sceneManager));
+        playButtons.add(new PlayButton(sceneManager, new Vector3(140, 400, 0)));
 
         Lists.add(playButtons);
 
         for(ArrayList<GameObject> array : Lists){
             for (GameObject gameObject : array){
-                gameObject.create(gameManager, new Vector3(140, 400, 0));
+                gameObject.create(gameManager);
             }
         }
     }

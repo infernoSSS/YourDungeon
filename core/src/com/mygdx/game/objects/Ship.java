@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.controller.Controller;
 import com.mygdx.game.managers.GameManager;
+import com.mygdx.game.scenes.Scene;
 
 import java.util.concurrent.Exchanger;
 
@@ -16,12 +17,16 @@ public class Ship extends GameObject {
     private GameManager gameManager;
     private Controller controller;
     private Vector3 motionVector;
-    private final int SPEED_CONSTANT = 200;
+    private final int SPEED_CONSTANT = 1000;
     private Texture texture;
 
+    public Ship(Vector3 position){
+        super(position);
+    }
+
     @Override
-    public void create(GameManager gameManager, Vector3 position) {
-        super.create(gameManager, position);
+    public void create(GameManager gameManager) {
+        super.create(gameManager);
         this.gameManager = gameManager;
         this.controller = gameManager.getController();
         texture = gameManager.getTextureManager().getTexture("ship");
@@ -30,7 +35,7 @@ public class Ship extends GameObject {
     @Override
     public void draw(SpriteBatch batch) {
         super.draw(batch);
-        batch.draw(texture, position.x, position.y);
+        batch.draw(gameManager.getTextureManager().getTexture("ship"), position.x, position.y);
     }
 
     private float xChanger;

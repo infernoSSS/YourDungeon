@@ -9,7 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = 480;
 		config.height = 600;
-		config.title = "Star Cripple";
+		config.title = "Your Dungeon";
 		new LwjglApplication(new MyGdxGame(), config);
 	}
 }

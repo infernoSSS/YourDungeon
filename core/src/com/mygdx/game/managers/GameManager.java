@@ -60,6 +60,10 @@ public class GameManager {
         return dt;
     }
 
+    public Controller getController() {
+        return controller;
+    }
+
     public SceneCreator getSceneCreator() {
         return sceneCreator;
     }

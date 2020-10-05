@@ -11,19 +11,16 @@ public class GameManager {
     private TextureManager textureManager;
     private SceneCreator sceneCreator;
     private float dt;
-
-    // -- Debug block
     private Controller controller;
-    // -- Debug block Ends
 
     public GameManager(){
         textureManager = new TextureManager();
         sceneCreator = new SceneCreator();
         dt = 0;
 
-        // -- Debug block
+
         controller = new Controller();
-        // -- Debug block Ends
+
 
     }
 

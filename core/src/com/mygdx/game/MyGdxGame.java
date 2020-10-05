@@ -23,7 +23,6 @@ public class MyGdxGame extends ApplicationAdapter {
 		sceneManager = new SceneManager(gameManager);
 		batch = new SpriteBatch();
 		ship = gameManager.getTextureManager().getTexture("ship");
-		new SceneManager(gameManager);
 	}
 
 	@Override

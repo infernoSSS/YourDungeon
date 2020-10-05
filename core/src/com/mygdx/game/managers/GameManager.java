@@ -14,12 +14,12 @@ public class GameManager {
     private Controller controller;
 
     public GameManager(){
+        controller = new Controller();
         textureManager = new TextureManager();
         sceneCreator = new SceneCreator();
         dt = 0;
 
 
-        controller = new Controller();
 
 
     }
@@ -29,12 +29,12 @@ public class GameManager {
     }
 
     public void update() {
-        dt += Gdx.graphics.getDeltaTime();
+        dt = Gdx.graphics.getDeltaTime();
     }
 
     // -- Debug block
     public void update(Batch batch) {
-        dt += Gdx.graphics.getDeltaTime();
+        update();
         BitmapFont debuggingText = new BitmapFont();
         batch.begin();
         Vector3 vector = new Vector3();

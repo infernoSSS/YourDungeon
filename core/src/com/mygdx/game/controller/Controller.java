@@ -52,7 +52,7 @@ public class Controller {
     public Vector3 generateMousePositionVector() {
         if (Gdx.input.isTouched()) {
             vector.x = lastXCursorPosition = Gdx.input.getX();
-            vector.y = lastYCursorPosition = Gdx.input.getY();
+            vector.y = lastYCursorPosition = Gdx.graphics.getHeight() - Gdx.input.getY();
         }
         else {
             vector.x = lastXCursorPosition;

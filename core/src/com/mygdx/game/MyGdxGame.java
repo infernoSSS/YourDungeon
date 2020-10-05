@@ -16,25 +16,27 @@ public class MyGdxGame extends ApplicationAdapter {
 	public void create () {
 		gameManager  = new GameManager();
 		batch = new SpriteBatch();
-		ship = gameManager.getTextureManager().;
+		ship = gameManager.getTextureManager().getTexture("ship");
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		update();
 		batch.begin();
 		batch.draw(ship, 0, 0);
 		batch.end();
 	}
 
 	public void update(){
-
+		gameManager.update();
 	}
 
 
 	@Override
 	public void dispose () {
+		gameManager.dispose();
 		batch.dispose();
 		ship.dispose();
 	}

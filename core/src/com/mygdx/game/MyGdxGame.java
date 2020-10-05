@@ -38,8 +38,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	public void update(){
 		gameManager.update();
-
-
+		gameManager.update(batch);
+		sceneManager.update();
 	}
 
 

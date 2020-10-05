@@ -13,12 +13,14 @@ import com.mygdx.game.managers.SceneManager;
 
 public class MyGdxGame extends ApplicationAdapter {
 	GameManager gameManager;
+	SceneManager sceneManager;
 	SpriteBatch batch;
 	Texture ship;
 
 	@Override
 	public void create () {
 		gameManager  = new GameManager();
+		sceneManager = new SceneManager(gameManager);
 		batch = new SpriteBatch();
 		ship = gameManager.getTextureManager().getTexture("ship");
 		new SceneManager(gameManager);
@@ -30,18 +32,21 @@ public class MyGdxGame extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		update();
 		batch.begin();
-		batch.draw(ship, 0, 0);
+		sceneManager.draw(batch);
 		batch.end();
 	}
 
 	public void update(){
-		gameManager.update(batch);
+		gameManager.update();
+
+
 	}
 
 
 	@Override
 	public void dispose () {
 		gameManager.dispose();
+		sceneManager.dispose();
 		batch.dispose();
 		ship.dispose();
 	}

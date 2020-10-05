@@ -1,6 +1,8 @@
 package com.mygdx.game.creators;
 
-import javafx.scene.Scene;
+
+import com.mygdx.game.scenes.Menu;
+import com.mygdx.game.scenes.Scene;
 
 public class SceneCreator {
     public SceneCreator(){
@@ -8,6 +10,9 @@ public class SceneCreator {
     }
 
     public Scene createScene(String sceneName){
-        return null;
+        switch (sceneName){
+            case ("menu") : return new Menu();
+            default: return null;
+        }
     }
 }

@@ -2,7 +2,9 @@ package com.mygdx.game.managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import javafx.scene.Scene;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.scenes.Scene;
+
 
 public class SceneManager {
     private Scene scene;
@@ -13,6 +15,20 @@ public class SceneManager {
     public SceneManager(GameManager gameManager){
         this.gameManager = gameManager;
         scene = gameManager.getSceneCreator().createScene("menu");
+        scene.create(gameManager);
         main_theme.play();
+    }
+
+    public void draw(SpriteBatch batch){
+        scene.draw(batch);
+    }
+
+    public void update(){
+        scene.update();
+    }
+
+    public void dispose(){
+        scene.dispose();
+        main_theme.dispose();
     }
 }

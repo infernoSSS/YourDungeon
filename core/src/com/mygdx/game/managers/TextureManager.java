@@ -10,7 +10,7 @@ public class TextureManager {
     public TextureManager(){
         textures = new HashMap<>();
         textures.put("ship", new Texture("ship/starship.png"));
-
+        textures.put("play", new Texture("buttons/Play.png"));
     }
 
     public Texture getTexture(String textureName) {

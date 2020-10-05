@@ -31,8 +31,6 @@ public class Ship extends GameObject {
     @Override
     public void update() {
         super.update();
-
-        controller = gameManager.getController();
         motionVector = controller.generateMotionVector();
 
         this.position.x += motionVector.x * speed * SPEED_CONSTANT * gameManager.getDt();

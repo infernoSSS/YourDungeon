@@ -20,6 +20,7 @@ public class GameManager {
         dt = 0;
 
 
+        controller = new Controller();
 
 
     }

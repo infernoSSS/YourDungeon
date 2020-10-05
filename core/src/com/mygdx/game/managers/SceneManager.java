@@ -16,6 +16,7 @@ public class SceneManager {
         this.gameManager = gameManager;
         scene = gameManager.getSceneCreator().createScene("menu");
         scene.create(gameManager, this);
+        main_theme.setVolume(0.2f);
         main_theme.play();
     }
 
@@ -23,7 +24,7 @@ public class SceneManager {
         scene.draw(batch);
     }
 
-    public void update(){
+    public void update() {
         scene.update();
     }
 

@@ -27,7 +27,7 @@ public abstract class Scene {
         }
     }
 
-    public void update(){
+    public void update() {
         for(ArrayList<GameObject> array : Lists){
             for (GameObject gameObject : array){
                 gameObject.update();

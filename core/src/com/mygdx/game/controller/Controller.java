@@ -20,10 +20,10 @@ public class Controller {
     private float verticalMotion;
     private float horizontalMotion;
 
-    public Vector3 generateMotionVector() throws Exception {
+    public Vector3 generateMotionVector() {
         verticalMotion = horizontalMotion = 0.0f;
         if (useHardwareKeyboard) {
-            if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)){
+            if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)) {
                 verticalMotion += 1.0f;
             }
             if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
@@ -35,9 +35,8 @@ public class Controller {
             if (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
                 verticalMotion -= 1.0f;
             }
-            return new Vector3(horizontalMotion, verticalMotion, 0);
         }
-        throw new Exception("No active keyboard found!");
+        return new Vector3(horizontalMotion, verticalMotion, 0);
     }
 
 

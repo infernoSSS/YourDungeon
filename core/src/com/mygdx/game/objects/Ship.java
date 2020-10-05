@@ -36,7 +36,6 @@ public class Ship extends GameObject {
         this.position.x += motionVector.x * speed * SPEED_CONSTANT * gameManager.getDt();
         this.position.y += motionVector.y * speed * SPEED_CONSTANT * gameManager.getDt();
 
-
     }
 
     @Override

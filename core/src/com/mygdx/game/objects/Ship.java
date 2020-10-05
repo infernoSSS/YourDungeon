@@ -11,7 +11,7 @@ import java.util.concurrent.Exchanger;
 
 public class Ship extends GameObject {
 
-    private float speed = 1.0f;
+    private float speedFactor = 1.0f;
 
     private GameManager gameManager;
     private Controller controller;
@@ -41,8 +41,8 @@ public class Ship extends GameObject {
         super.update();
         motionVector = controller.generateMotionVector();
 
-        xChanger = motionVector.x * speed * SPEED_CONSTANT * gameManager.getDt();
-        yChanger = motionVector.y * speed * SPEED_CONSTANT * gameManager.getDt();
+        xChanger = motionVector.x * speedFactor * SPEED_CONSTANT * gameManager.getDt();
+        yChanger = motionVector.y * speedFactor * SPEED_CONSTANT * gameManager.getDt();
 
         if (motionVector.x != 0.0f && motionVector.y != 0.0f) {
             xChanger *= Math.sqrt(2) / 2;

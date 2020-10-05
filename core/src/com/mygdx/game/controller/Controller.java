@@ -22,7 +22,7 @@ public class Controller {
 
     public Vector3 generateMotionVector() throws Exception {
         verticalMotion = horizontalMotion = 0.0f;
-        if (useHardwareKeyboard == true) {
+        if (useHardwareKeyboard) {
             if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)){
                 verticalMotion += 1.0f;
             }
@@ -46,20 +46,17 @@ public class Controller {
     private int lastXCursorPosition = 0;
     private int lastYCursorPosition = 0;
 
-    public Vector3 generateMousePositionVector() throws Exception{
-        //if (useMultiTouch == true) {
-            if (Gdx.input.justTouched()) {
-                vector.x = lastXCursorPosition = Gdx.input.getX();
-                vector.y = lastYCursorPosition = Gdx.input.getY();
-            }
-            else {
-                vector.x = lastXCursorPosition;
-                vector.y = lastYCursorPosition;
-            }
-            vector.z = 0;
-            return vector;
-        // }
-        // throw new Exception("No active touch handler found!");
+    public Vector3 generateMousePositionVector() {
+        if (Gdx.input.isTouched()) {
+            vector.x = lastXCursorPosition = Gdx.input.getX();
+            vector.y = lastYCursorPosition = Gdx.input.getY();
+        }
+        else {
+            vector.x = lastXCursorPosition;
+            vector.y = lastYCursorPosition;
+        }
+        vector.z = 0;
+        return vector;
     }
 
 }

@@ -29,12 +29,12 @@ public class GameManager {
     }
 
     public void update() {
-        dt += Gdx.graphics.getDeltaTime();
+        dt = Gdx.graphics.getDeltaTime();
     }
 
     // -- Debug block
     public void update(Batch batch) {
-        dt += Gdx.graphics.getDeltaTime();
+        dt = Gdx.graphics.getDeltaTime();
         BitmapFont debuggingText = new BitmapFont();
         batch.begin();
         Vector3 vector = new Vector3();

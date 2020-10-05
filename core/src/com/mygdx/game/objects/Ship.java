@@ -12,22 +12,22 @@ public class Ship extends GameObject {
 
     private GameManager gameManager;
     private Controller controller;
+    private Vector3 motionVector;
+    private final int SPEED_CONSTANT = 50;
+
 
     @Override
     public void create(GameManager gameManager, Vector3 position) {
         super.create(gameManager, position);
         this.gameManager = gameManager;
         this.controller = gameManager.getController();
+        motionVector = new Vector3();
     }
 
     @Override
     public void draw(SpriteBatch batch) {
         super.draw(batch);
     }
-
-    private Vector3 motionVector;
-
-    private final int SPEED_CONSTANT = 50;
 
     @Override
     public void update() {

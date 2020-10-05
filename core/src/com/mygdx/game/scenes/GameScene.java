@@ -1,6 +1,7 @@
 package com.mygdx.game.scenes;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.managers.GameManager;
 import com.mygdx.game.managers.SceneManager;
 import com.mygdx.game.objects.GameObject;
@@ -19,6 +20,12 @@ public class GameScene extends Scene {
         shipList.add(new Ship());
 
         Lists.add(shipList);
+
+        for(ArrayList<GameObject> array : Lists){
+            for (GameObject gameObject : array){
+                gameObject.create(gameManager, new Vector3(140, 400, 0));
+            }
+        }
     }
 
     @Override

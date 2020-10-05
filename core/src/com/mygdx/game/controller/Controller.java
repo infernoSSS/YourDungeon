@@ -46,6 +46,10 @@ public class Controller {
     private int lastXCursorPosition = 0;
     private int lastYCursorPosition = 0;
 
+    public boolean isTouched() {
+        return Gdx.input.isTouched();
+    }
+
     public Vector3 generateMousePositionVector() {
         if (Gdx.input.isTouched()) {
             vector.x = lastXCursorPosition = Gdx.input.getX();

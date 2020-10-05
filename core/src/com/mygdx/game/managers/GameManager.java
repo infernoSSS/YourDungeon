@@ -31,10 +31,13 @@ public class GameManager {
         return textureManager;
     }
 
+    public void update() {
+        dt += Gdx.graphics.getDeltaTime();
+    }
+
+    // -- Debug block
     public void update(Batch batch) {
         dt += Gdx.graphics.getDeltaTime();
-
-        // -- Debug block
         BitmapFont debuggingText = new BitmapFont();
         batch.begin();
         Vector3 vector = new Vector3();
@@ -43,14 +46,15 @@ public class GameManager {
             vector = controller.generateMotionVector();
             cursor = controller.generateMousePositionVector();
         } catch (Exception e) {
-
+            // Nothing)
         }
         String keyStatuses = "horizontalMotion  = " + vector.x + ";\nverticalMotion = " + vector.y + ";\n\n";
-        keyStatuses += "mouseXPos = " + cursor.x + ";\nmouseYPos = " + cursor.y + ";";
+        keyStatuses += "isTouched = " + controller.isTouched() + ";\n";
+        keyStatuses += "touchXPos = " + cursor.x + ";\ntouchYPos = " + cursor.y + ";\n";
         debuggingText.draw(batch, keyStatuses, 0, Gdx.graphics.getHeight());
         batch.end();
-        // -- Debug block Ends
     }
+    // -- Debug block Ends
 
     public float getDt() {
         return dt;

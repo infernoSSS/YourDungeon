@@ -58,8 +58,11 @@ public class Ship extends GameObject {
         if (position.y + yChanger > Gdx.graphics.getHeight() - texture.getHeight()){
             yChanger = Gdx.graphics.getHeight() - texture.getHeight() - position.y;
         }
-        else if (position.y + yChanger < 0.0f) {
+        /*else if (position.y + yChanger < 0.0f) {
             yChanger = -position.y;
+        }*/
+        else if (position.y + yChanger < -10.0f) {
+            yChanger = -position.y - 10.0f;
         }
 
         position.x += xChanger;

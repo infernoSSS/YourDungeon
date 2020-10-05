@@ -17,22 +17,23 @@ public class Controller {
         useMultiTouch = Gdx.input.isPeripheralAvailable(Input.Peripheral.MultitouchScreen);
     }
 
-    private float verticalMotion = 0.0f;
-    private float horizontalMotion = 0.0f;
+    private float verticalMotion;
+    private float horizontalMotion;
 
     public Vector3 generateMotionVector() throws Exception {
+        verticalMotion = horizontalMotion = 0.0f;
         if (useHardwareKeyboard == true) {
             if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)){
-                verticalMotion = 1.0f;
+                verticalMotion += 1.0f;
             }
-            else if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-                horizontalMotion = -1.0f;
+            if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+                horizontalMotion -= 1.0f;
             }
-            else if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-                horizontalMotion = 1.0f;
+            if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+                horizontalMotion += 1.0f;
             }
-            else if (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-                verticalMotion = -1.0f;
+            if (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+                verticalMotion -= 1.0f;
             }
             return new Vector3(horizontalMotion, verticalMotion, 0);
         }

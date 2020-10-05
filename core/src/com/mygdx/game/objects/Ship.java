@@ -33,8 +33,14 @@ public class Ship extends GameObject {
         super.update();
         motionVector = controller.generateMotionVector();
 
-        this.position.x += motionVector.x * speed * SPEED_CONSTANT * gameManager.getDt();
-        this.position.y += motionVector.y * speed * SPEED_CONSTANT * gameManager.getDt();
+        if (motionVector.x != 0.0f && motionVector.y != 0.0f) {
+            this.position.x += motionVector.x * Math.sqrt(2) / 2 * speed * SPEED_CONSTANT * gameManager.getDt();
+            this.position.y += motionVector.y * Math.sqrt(2) / 2 * speed * SPEED_CONSTANT * gameManager.getDt();
+        }
+        else {
+            this.position.x += motionVector.x * speed * SPEED_CONSTANT * gameManager.getDt();
+            this.position.y += motionVector.y * speed * SPEED_CONSTANT * gameManager.getDt();
+        }
 
     }
 

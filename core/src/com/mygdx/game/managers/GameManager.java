@@ -14,6 +14,7 @@ public class GameManager {
     private Controller controller;
 
     public GameManager(){
+        controller = new Controller();
         textureManager = new TextureManager();
         sceneCreator = new SceneCreator();
         dt = 0;
@@ -34,7 +35,7 @@ public class GameManager {
 
     // -- Debug block
     public void update(Batch batch) {
-        dt = Gdx.graphics.getDeltaTime();
+        update();
         BitmapFont debuggingText = new BitmapFont();
         batch.begin();
         Vector3 vector = new Vector3();

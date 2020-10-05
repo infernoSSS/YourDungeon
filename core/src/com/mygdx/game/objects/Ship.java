@@ -7,13 +7,12 @@ import com.mygdx.game.managers.GameManager;
 
 public class Ship extends GameObject {
 
-    private float verticalSpeed = 1.0f;
-    private float horizontalSpeed = 1.0f;
+    private float speed = 1.0f;
 
     private GameManager gameManager;
     private Controller controller;
     private Vector3 motionVector;
-    private final int SPEED_CONSTANT = 50;
+    private final int SPEED_CONSTANT = 200;
 
 
     @Override
@@ -21,20 +20,22 @@ public class Ship extends GameObject {
         super.create(gameManager, position);
         this.gameManager = gameManager;
         this.controller = gameManager.getController();
-        motionVector = new Vector3();
     }
 
     @Override
     public void draw(SpriteBatch batch) {
         super.draw(batch);
+        batch.draw(gameManager.getTextureManager().getTexture("ship"), position.x, position.y);
     }
 
     @Override
     public void update() {
         super.update();
         motionVector = controller.generateMotionVector();
-        this.position.x += motionVector.y * verticalSpeed * SPEED_CONSTANT;
-        this.position.y += -motionVector.x * horizontalSpeed * SPEED_CONSTANT;
+
+        this.position.x += motionVector.x * speed * SPEED_CONSTANT * gameManager.getDt();
+        this.position.y += motionVector.y * speed * SPEED_CONSTANT * gameManager.getDt();
+
     }
 
     @Override

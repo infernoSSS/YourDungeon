@@ -4,9 +4,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.managers.GameManager;
+import com.mygdx.game.managers.SceneManager;
 
 public class PlayButton extends GameObject {
     private Rectangle hitbox;
+    private SceneManager sceneManager;
+
+    public PlayButton(SceneManager sceneManager){
+        this.sceneManager = sceneManager;
+    }
 
     @Override
     public void create(GameManager gameManager, Vector3 position) {
@@ -28,7 +34,7 @@ public class PlayButton extends GameObject {
     public void checkTap(){
         if(gameManager.getController().isTouched()){
             if (hitbox.contains(gameManager.getController().generateMousePositionVector().x, gameManager.getController().generateMousePositionVector().y)){
-                //sceneManager change scene
+
             }
         }
     }

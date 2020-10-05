@@ -15,7 +15,7 @@ public class SceneManager {
     public SceneManager(GameManager gameManager){
         this.gameManager = gameManager;
         scene = gameManager.getSceneCreator().createScene("menu");
-        scene.create(gameManager);
+        scene.create(gameManager, this);
         main_theme.play();
     }
 
@@ -30,5 +30,11 @@ public class SceneManager {
     public void dispose(){
         scene.dispose();
         main_theme.dispose();
+    }
+
+    public void changeScene(String sceneName){
+        scene.dispose();
+        scene = gameManager.getSceneCreator().createScene(sceneName);
+        scene.create(gameManager, this);
     }
 }

@@ -3,6 +3,7 @@ package com.mygdx.game.scenes;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.managers.GameManager;
+import com.mygdx.game.managers.SceneManager;
 import com.mygdx.game.objects.GameObject;
 import com.mygdx.game.objects.PlayButton;
 
@@ -12,10 +13,10 @@ public class Menu extends Scene {
     private ArrayList<GameObject> playButtons;
 
     @Override
-    public void create(GameManager gameManager) {
-        super.create(gameManager);
+    public void create(GameManager gameManager, SceneManager sceneManager) {
+        super.create(gameManager, sceneManager);
         playButtons = new ArrayList<>();
-        playButtons.add(new PlayButton());
+        playButtons.add(new PlayButton(sceneManager));
 
         Lists.add(playButtons);
 

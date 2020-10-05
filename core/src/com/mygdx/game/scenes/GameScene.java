@@ -2,6 +2,7 @@ package com.mygdx.game.scenes;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.managers.GameManager;
+import com.mygdx.game.managers.SceneManager;
 import com.mygdx.game.objects.GameObject;
 import com.mygdx.game.objects.Ship;
 
@@ -11,8 +12,8 @@ public class GameScene extends Scene {
     ArrayList<GameObject> shipList;
 
     @Override
-    public void create(GameManager gameManager) {
-        super.create(gameManager);
+    public void create(GameManager gameManager, SceneManager sceneManager) {
+        super.create(gameManager, sceneManager);
 
         shipList = new ArrayList<>();
         shipList.add(new Ship());

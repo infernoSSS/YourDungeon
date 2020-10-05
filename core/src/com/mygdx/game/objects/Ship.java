@@ -1,9 +1,13 @@
 package com.mygdx.game.objects;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.controller.Controller;
 import com.mygdx.game.managers.GameManager;
+
+import java.util.concurrent.Exchanger;
 
 public class Ship extends GameObject {
 
@@ -13,34 +17,53 @@ public class Ship extends GameObject {
     private Controller controller;
     private Vector3 motionVector;
     private final int SPEED_CONSTANT = 200;
-
+    private Texture texture;
 
     @Override
     public void create(GameManager gameManager, Vector3 position) {
         super.create(gameManager, position);
         this.gameManager = gameManager;
         this.controller = gameManager.getController();
+        texture = gameManager.getTextureManager().getTexture("ship");
     }
 
     @Override
     public void draw(SpriteBatch batch) {
         super.draw(batch);
-        batch.draw(gameManager.getTextureManager().getTexture("ship"), position.x, position.y);
+        batch.draw(texture, position.x, position.y);
     }
+
+    private float xChanger;
+    private float yChanger;
 
     @Override
     public void update() {
         super.update();
         motionVector = controller.generateMotionVector();
 
+        xChanger = motionVector.x * speed * SPEED_CONSTANT * gameManager.getDt();
+        yChanger = motionVector.y * speed * SPEED_CONSTANT * gameManager.getDt();
+
         if (motionVector.x != 0.0f && motionVector.y != 0.0f) {
-            this.position.x += motionVector.x * Math.sqrt(2) / 2 * speed * SPEED_CONSTANT * gameManager.getDt();
-            this.position.y += motionVector.y * Math.sqrt(2) / 2 * speed * SPEED_CONSTANT * gameManager.getDt();
+            xChanger *= Math.sqrt(2) / 2;
+            yChanger *= Math.sqrt(2) / 2;
         }
-        else {
-            this.position.x += motionVector.x * speed * SPEED_CONSTANT * gameManager.getDt();
-            this.position.y += motionVector.y * speed * SPEED_CONSTANT * gameManager.getDt();
+
+        if (position.x + xChanger > Gdx.graphics.getWidth() - texture.getWidth()) {
+            xChanger = Gdx.graphics.getWidth() - texture.getWidth() - position.x;
         }
+        else if (position.x + xChanger < 0.0f) {
+            xChanger = -position.x;
+        }
+        if (position.y + yChanger > Gdx.graphics.getHeight() - texture.getHeight()){
+            yChanger = Gdx.graphics.getHeight() - texture.getHeight() - position.y;
+        }
+        else if (position.y + yChanger < 0.0f) {
+            yChanger = -position.y;
+        }
+
+        position.x += xChanger;
+        position.y += yChanger;
 
     }
 

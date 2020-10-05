@@ -26,7 +26,11 @@ public class PlayButton extends GameObject {
     }
 
     public void checkTap(){
-        //if(gameManager)
+        if(gameManager.getController().isTouched()){
+            if (hitbox.contains(gameManager.getController().generateMousePositionVector().x, gameManager.getController().generateMousePositionVector().y)){
+                //sceneManager change scene
+            }
+        }
     }
 
     @Override

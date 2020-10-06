@@ -28,4 +28,8 @@ public abstract class GameObject {
     public void dispose(){
 
     }
+
+    public Vector3 getPosition() {
+        return position;
+    }
 }

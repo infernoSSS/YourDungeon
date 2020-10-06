@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class MeteorGenerator {
     private Meteors meteor;
 
-    public ArrayList<GameObject> generateMeteors(ArrayList<GameObject> meteorsList){
+    // public ArrayList<GameObject> generateMeteors(ArrayList<GameObject> meteorsList) {
 
-    }
+    // };
 }

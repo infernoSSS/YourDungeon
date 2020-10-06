@@ -14,7 +14,7 @@ public class Meteors extends GameObject {
     private float rotation;
     private boolean deleted;
 
-    public Meteors(Vector3 position, GameScene gameScene){
+    public Meteors(Vector3 position){
         super(position);
     }
 

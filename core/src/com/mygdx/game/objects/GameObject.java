@@ -25,6 +25,10 @@ public abstract class GameObject {
 
     }
 
+    public boolean isDeleted(){
+        return false;
+    }
+
     public void dispose(){
 
     }

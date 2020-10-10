@@ -20,6 +20,7 @@ public abstract class Scene {
     }
 
     public void draw(SpriteBatch batch){
+        batch.draw(gameManager.getTextureManager().getTexture("back"), 0 ,0);
         for(ArrayList<GameObject> array : Lists){
             for (GameObject gameObject : array){
                 if(gameObject!=null)

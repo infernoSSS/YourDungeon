@@ -17,7 +17,7 @@ public class Ship extends GameObject {
     private GameManager gameManager;
     private Controller controller;
     private Vector3 motionVector;
-    private final int SPEED_CONSTANT = 1000;
+    private final int SPEED_CONSTANT = 700;
     private Texture texture;
 
     public Ship(Vector3 position){

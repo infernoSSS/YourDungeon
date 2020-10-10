@@ -13,17 +13,20 @@ public class Meteors extends GameObject {
     private int rotationSpeed;
     private float rotation;
     private boolean deleted;
+    TextureRegion textureRegion;
 
-    public Meteors(Vector3 position, GameScene gameScene){
+    public Meteors(Vector3 position){
         super(position);
     }
 
     @Override
     public void create(GameManager gameManager) {
         super.create(gameManager);
-        speed = (int)(Math.random()*350);
+        speed = (int)(Math.random()*50) + 150;
         rotationSpeed = (int)(Math.random()*1000*(Math.random()-0.5));
         rotation = 0;
+        textureRegion = new TextureRegion(gameManager.getTextureManager().getTexture("meteor4"));
+        deleted = false;
     }
 
     public void setMouthenVector(Vector3 mouthenVector){
@@ -32,15 +35,15 @@ public class Meteors extends GameObject {
 
     @Override
     public void draw(SpriteBatch batch) {
-        batch.draw(new TextureRegion(gameManager.getTextureManager().getTexture("meteor4")),
-                position.x, position.y,
-                gameManager.getTextureManager().getTexture("meteor4").getWidth()/2,
-                gameManager.getTextureManager().getTexture("meteor4").getHeight()/2,
-                gameManager.getTextureManager().getTexture("meteor4").getWidth(),
-                gameManager.getTextureManager().getTexture("meteor4").getHeight(),
-                1,
-                1,
-                rotation);
+            batch.draw(textureRegion,
+                    position.x, position.y,
+                    gameManager.getTextureManager().getTexture("meteor4").getWidth() / 2,
+                    gameManager.getTextureManager().getTexture("meteor4").getHeight() / 2,
+                    gameManager.getTextureManager().getTexture("meteor4").getWidth(),
+                    gameManager.getTextureManager().getTexture("meteor4").getHeight(),
+                    1,
+                    1,
+                    rotation);
         update();
     }
 
@@ -52,6 +55,7 @@ public class Meteors extends GameObject {
         rotation += rotationSpeed*gameManager.getDt();
         if(checkDelete()){
             dispose();
+            deleted = true;
         }
     }
 
@@ -60,6 +64,10 @@ public class Meteors extends GameObject {
             return true;
         }
         return false;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
     }
 
     @Override

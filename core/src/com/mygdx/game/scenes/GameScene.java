@@ -15,8 +15,6 @@ import java.util.ArrayList;
 
 public class GameScene extends Scene {
     ArrayList<GameObject> meteorList;
-
-    Meteors meteor;
     LaserGenerator laserGenerator;
     MeteorCreator meteorCreator;
     Ship ship;

@@ -24,6 +24,7 @@ public class MeteorGenerator {
         meteorSpawnDeltaTime = 1;
     }
 
+    // public ArrayList<GameObject> generateMeteors(ArrayList<GameObject> meteorsList) {
     public ArrayList<GameObject> generateMeteors(ArrayList<GameObject> meteorsList){
         if(meteorSpawnDeltaTime >= 0.05f){
             if(randomMeteor()){
@@ -47,6 +48,7 @@ public class MeteorGenerator {
         }
     }
 
+    // };
     private int randomDeploymentZone(){
         return (int)(Math.random()*4);
     }

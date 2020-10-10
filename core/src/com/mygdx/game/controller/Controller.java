@@ -3,9 +3,6 @@ package com.mygdx.game.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector3;
-import org.w3c.dom.html.HTMLTableRowElement;
-
-import static com.sun.tools.doclint.Entity.or;
 
 public class Controller {
 

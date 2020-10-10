@@ -8,8 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.controller.Controller;
 import com.mygdx.game.managers.GameManager;
-import org.graalvm.compiler.replacements.Log;
-import sun.awt.AWTAccessor;
+
 
 import java.util.ArrayList;
 import java.util.Random;

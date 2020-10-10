@@ -1,6 +1,7 @@
 package com.mygdx.game.objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.managers.GameManager;
@@ -26,6 +27,10 @@ public abstract class GameObject {
     }
 
     public boolean isDeleted(){
+        return false;
+    }
+
+    public boolean contains(Circle hitBox){
         return false;
     }
 

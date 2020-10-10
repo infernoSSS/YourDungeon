@@ -3,7 +3,6 @@ package com.mygdx.game.scenes;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.MeteorCreator;
-import com.mygdx.game.MeteorGenerator;
 import com.mygdx.game.LaserGenerator;
 import com.mygdx.game.managers.GameManager;
 import com.mygdx.game.managers.SceneManager;
@@ -15,13 +14,12 @@ import com.mygdx.game.objects.Ship;
 import java.util.ArrayList;
 
 public class GameScene extends Scene {
-    ArrayList<GameObject> shipList;
     ArrayList<GameObject> meteorList;
 
     Meteors meteor;
     LaserGenerator laserGenerator;
     MeteorCreator meteorCreator;
-    //MeteorGenerator meteorGenerator;
+    Ship ship;
 
     @Override
     public void create(GameManager gameManager, SceneManager sceneManager) {
@@ -30,18 +28,14 @@ public class GameScene extends Scene {
         meteorCreator = new MeteorCreator(gameManager);
 
         // list 1-meteors, 2-lasers, 3 - BlackHole, 4 - ship, 5 UI
-        shipList = new ArrayList<>();
-        Ship ship = new Ship(new Vector3(140, 400, 0));
-        shipList.add(ship);
+        ship = new Ship(new Vector3(140, 400, 0));
+        ship.create(gameManager);
 
 
         meteorList = meteorCreator.generateMeteors();
-        //meteorList = meteorGenerator.generateMeteors(meteorList);
-
 
 
         Lists.add(meteorList);
-        Lists.add(shipList);
 
         laserGenerator = new LaserGenerator(ship, gameManager);
 
@@ -55,7 +49,7 @@ public class GameScene extends Scene {
     @Override
     public void draw(SpriteBatch batch) {
         super.draw(batch);
-
+        ship.draw(batch);
     }
 
     @Override
@@ -66,14 +60,14 @@ public class GameScene extends Scene {
 
         meteorCreator.update(Lists.get(0));
 
-        //meteorGenerator.update(Lists.get(0));
-
-        //meteor.update();
+        ship.update();
+        ship.checkAlive(Lists);
 
     }
 
     @Override
     public void dispose() {
         super.dispose();
+        ship.dispose();
     }
 }

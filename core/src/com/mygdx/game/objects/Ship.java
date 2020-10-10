@@ -38,6 +38,10 @@ public class Ship extends GameObject {
         isAlive = true;
         texture = gameManager.getTextureManager().getTexture("ship");
         hitBox = new Circle(position.x+texture.getWidth()/2, position.y+texture.getHeight()/2, texture.getWidth()/2);
+//        hitBox = new Circle(position.x, position.y, texture.getWidth()/2);
+
+        System.out.println("overlaps " + new Circle(0,0,22f).overlaps(new Circle(0, 26, 25f)));
+//        System.out.println("ship x : " + position.x+texture.getWidth()/2 + " y : " + position.y+texture.getHeight()/2 + " rad : " + texture.getWidth()/2);
     }
 
     @Override
@@ -80,17 +84,25 @@ public class Ship extends GameObject {
         position.x += xChanger;
         position.y += yChanger;
 
+        hitBox.x = position.x;
+        hitBox.y = position.y;
+
     }
 
     public void checkAlive(ArrayList<ArrayList<GameObject>> lists){
         for (ArrayList<GameObject> gameObjList : lists){
             for (GameObject gameObject : gameObjList){
-                isAlive = !gameObject.contains(hitBox);
+                if(gameObject.contains(hitBox)){
+                 isAlive = false;
+                }
             }
         }
+
     }
 
-
+    public boolean isAlive() {
+        return isAlive;
+    }
 
     @Override
     public void dispose() {

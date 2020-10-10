@@ -14,10 +14,10 @@ import com.mygdx.game.objects.Ship;
 import java.util.ArrayList;
 
 public class GameScene extends Scene {
-    ArrayList<GameObject> meteorList;
-    LaserGenerator laserGenerator;
-    MeteorCreator meteorCreator;
-    Ship ship;
+    private ArrayList<GameObject> meteorList;
+    private LaserGenerator laserGenerator;
+    private MeteorCreator meteorCreator;
+    private Ship ship;
 
     @Override
     public void create(GameManager gameManager, SceneManager sceneManager) {
@@ -32,21 +32,18 @@ public class GameScene extends Scene {
 
         meteorList = meteorCreator.generateMeteors();
 
-
         Lists.add(meteorList);
 
         laserGenerator = new LaserGenerator(ship, gameManager);
 
-        for(ArrayList<GameObject> array : Lists){
-            for (GameObject gameObject : array){
-                gameObject.create(gameManager);
-            }
-        }
+
     }
 
     @Override
     public void draw(SpriteBatch batch) {
         super.draw(batch);
+
+        if (ship.isAlive())
         ship.draw(batch);
     }
 
@@ -58,8 +55,9 @@ public class GameScene extends Scene {
 
         meteorCreator.update(Lists.get(0));
 
+        if (ship.isAlive()){
         ship.update();
-        ship.checkAlive(Lists);
+        ship.checkAlive(Lists);}
 
     }
 

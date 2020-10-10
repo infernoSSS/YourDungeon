@@ -3,6 +3,7 @@ package com.mygdx.game.objects;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.managers.GameManager;
 import com.mygdx.game.scenes.GameScene;
@@ -13,7 +14,8 @@ public class Meteors extends GameObject {
     private int rotationSpeed;
     private float rotation;
     private boolean deleted;
-    TextureRegion textureRegion;
+    private TextureRegion textureRegion;
+    private Circle hitBox;
 
     public Meteors(Vector3 position){
         super(position);
@@ -27,6 +29,12 @@ public class Meteors extends GameObject {
         rotation = 0;
         textureRegion = new TextureRegion(gameManager.getTextureManager().getTexture("meteor4"));
         deleted = false;
+        hitBox = new Circle(position.x+gameManager.getTextureManager().getTexture("meteor4").getWidth()/2,
+                position.y+gameManager.getTextureManager().getTexture("meteor4").getHeight()/2,
+                gameManager.getTextureManager().getTexture("meteor4").getWidth()/2);
+//                30);
+
+        //System.out.println("x : " + hitBox.x + " y : " + hitBox.y + " rad : " + hitBox.radius);
     }
 
     public void setMouthenVector(Vector3 mouthenVector){
@@ -57,6 +65,8 @@ public class Meteors extends GameObject {
             dispose();
             deleted = true;
         }
+        hitBox.x = position.x;
+        hitBox.y = position.y;
     }
 
     private boolean checkDelete(){
@@ -64,6 +74,16 @@ public class Meteors extends GameObject {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean contains(Circle box) {
+
+        if (this.hitBox.overlaps(box)){
+        System.out.println("da");
+        }
+
+        return this.hitBox.overlaps(box);
     }
 
     public boolean isDeleted() {
